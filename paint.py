@@ -47,14 +47,12 @@ def rectangle(start, end):
     goto(start.x, start.y)
     down()
     begin_fill()
-
-    width = end.x - start.x
-    height = abs(end.y - start.y)
-
-    for _ in range(2):
-        forward(width)
-        left(90)
-        forward(height)
+    
+    for count in range(4):
+        if count % 2 ==1:
+            forward((end.x - start.x) / 2 )
+        else:
+            forward(end.x - start.x)
         left(90)
 
     end_fill()
