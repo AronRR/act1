@@ -49,7 +49,7 @@ def rectangle(start, end):
     begin_fill()
 
     width = end.x - start.x
-    height = (end.y - start.y)
+    height = abs(end.y - start.y)
 
     for _ in range(2):
         forward(width)
@@ -68,11 +68,12 @@ def triangle(start, end):
     begin_fill()
 
     goto(end.x, end.y)
-    goto(start.x - (end.x - start.x), start.y)
+
+    mid_x = (start.x + end.x) / 2
+    height = abs(end.x - start.x) * (3**0.5) / 2
+    goto(mid_x, start.y + height)
     goto(start.x, start.y)
-
     end_fill()
-
 
 def tap(x, y):
     """Store starting point or draw shape."""
