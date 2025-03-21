@@ -36,15 +36,14 @@ def square(start, end):
     end_fill()
 
 
-def circle(start, end):
+def draw_circle(start, end):   
     """Draw circle from start to end."""	
     up()
-    goto(start.x, start.y- ((end.x -start.x)** 2 +(end.y -start.y)**2)** 0.5)
+    radius = ((end.x - start.x) **2 + (end.y -start.y)**2)**0.5 	
+    goto(start.x, start.y- radius)
     down()
     begin_fill()
-
-    radius = ((end.x - start.x) ** 2 + (end.y - start.y) ** 2 ) **0.5
-    turtle.circle(radius)
+    circle(radius)
     end_fill()	
 
 
@@ -53,8 +52,6 @@ def rectangle(start, end):
     pass  # TODO
 
 
-def triangle(start, end):
-    """Draw triangle from start to end."""
     pass  # TODO
 
 def tap(x, y):
@@ -79,6 +76,7 @@ state = {'start': None, 'shape': line}
 setup(420, 420, 370, 0)
 onscreenclick(tap)
 listen()
+
 onkey(undo, 'u')
 onkey(lambda: color('black'), 'K')
 onkey(lambda: color('white'), 'W')
